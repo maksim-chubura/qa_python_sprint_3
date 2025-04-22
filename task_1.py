@@ -119,3 +119,26 @@ class OnlineSalesRegisterCollector:
             raise ValueError('Необходимо ввести 10 цифр после "+7"')
         
         return f'+7{str_number}'
+    
+    
+    # Дополнительное задание
+
+    @staticmethod
+    def get_date_and_time():
+        date_and_time = []
+        now = datetime.datetime.now()
+
+        # список временных интервалов и соответствующих лямбда-функций
+        date = [
+            ['часы', lambda x: x.hour],
+            ['минуты', lambda x: x.minute],
+            ['день', lambda x: x.day],
+            ['месяц', lambda x: x.month],
+            ['год', lambda x: x.year]
+        ]
+
+        # цикл для заполнения date_and_time
+        for interval in date:
+            date_and_time.append(f'{interval[0]}: {interval[1](now)}')
+        
+        return date_and_time
